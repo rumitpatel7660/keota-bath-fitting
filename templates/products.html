@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Koeta Bath Fitting</title>
+    <meta name="description" content="Explore Koeta Bath Fitting's range of high-quality industrial bath fitting products.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Product Card Animations */
+        .product-card {
+            opacity: 0;
+            transform: translateY(60px) scale(0.9);
+            animation: cardReveal 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes cardReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Modern Image Container */
+        .modern-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modern-image-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(13, 148, 136, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 2;
+        }
+        
+        .product-card:hover .modern-image-container::before {
+            opacity: 1;
+        }
+        
+        .product-card:hover .modern-image-container {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Enhanced Product Image */
+        .modern-product-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .product-card:hover .modern-product-img {
+            transform: scale(1.15) rotate(2deg);
+            filter: brightness(1.1) contrast(1.1);
+        }
+        
+        /* Glowing Border Effect */
+        .glow-border {
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #14b8a6, #0d9488, #14b8a6, #0d9488);
+            border-radius: 22px;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+        
+        .product-card:hover .glow-border {
+            opacity: 1;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #14b8a6;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 4s ease-in-out infinite;
+        }
+        
+        .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 40%; right: 15%; animation-delay: 1s; }
+        .particle:nth-child(3) { top: 60%; left: 20%; animation-delay: 2s; }
+        .particle:nth-child(4) { top: 80%; right: 10%; animation-delay: 3s; }
+        
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translateY(0px) scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-20px) scale(1);
+                opacity: 0.8;
+            }
+        }
+        
+        .product-card:hover .particle {
+            animation-play-state: running;
+        }
+        
+        /* Modern Product Name Overlay */
+        .modern-name-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.95), rgba(13, 148, 136, 0.95));
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 3;
+        }
+        
+        .product-card:hover .modern-name-overlay {
+            transform: translateY(0);
+        }
+        
+        .modern-product-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Modern Category Badge */
+        .modern-category-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .modern-category-badge:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+        
+        /* Shimmer Effect */
+        .shimmer-effect {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            transition: left 1s ease;
+            z-index: 3;
+        }
+        
+        .product-card:hover .shimmer-effect {
+            left: 100%;
+        }
+        
+        /* Category filter styling */
+        .category-filter {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-filter::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+        }
+        
+        .category-filter:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* 3D Tilt Effect */
+        .tilt-container {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .tilt-container:hover {
+            transform: rotateX(5deg) rotateY(5deg);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .modern-image-container {
+                border-radius: 15px;
+            }
+            
+            .modern-name-overlay {
+                transform: translateY(0);
+                background: linear-gradient(135deg, rgba(20, 184, 166, 0.9), rgba(13, 148, 136, 0.9));
+            }
+            
+            .product-card:hover .modern-image-container {
+                transform: translateY(-5px) scale(1.01);
+            }
+            
+            .product-card:hover .modern-product-img {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .product-card,
+            .modern-image-container,
+            .modern-product-img,
+            .shimmer-effect,
+            .particle {
+                animation: none;
+                transition: none;
+            }
+            
+            .product-card:hover .modern-image-container,
+            .product-card:hover .modern-product-img,
+            .product-card:hover .modern-name-overlay {
+                transform: none;
+            }
+        }
+        
+        .category-theme {
+            background: linear-gradient(90deg, #14b8a6 0%, #06b6d4 100%) !important;
+            color: #fff !important;
+            box-shadow: 0 4px 24px 0 rgba(20,184,166,0.10);
+        }
+        .category-filter:hover, .category-filter:focus {
+            background: linear-gradient(90deg, #06b6d4 0%, #14b8a6 100%) !important;
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-50 to-white font-roboto">
+    {% include 'menubar.html' %}
+    
+    <!-- Hero Section with Product Image and Overlay -->
+    <section class="relative h-screen flex flex-col items-center justify-center mb-8">
+        <img src="{{ url_for('static', filename='product hero.png') }}" alt="Product Hero" class="absolute inset-0 w-full h-full object-cover object-center z-0">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 z-10"></div>
+        <div class="relative z-20 w-full text-center flex flex-col items-center justify-center h-full">
+            <h1 class="text-4xl md:text-6xl font-montserrat font-bold text-white drop-shadow-lg mb-4">Our Products</h1>
+            <div class="w-24 h-1 bg-gradient-to-r from-teal-500 to-teal-600 mx-auto rounded-full mb-8"></div>
+            <!-- Category Filters (moved into hero) -->
+            <div class="flex flex-wrap justify-center gap-4 mb-0">
+                <a href="#" 
+                   class="category-filter category-theme px-6 py-3 rounded-full font-medium relative z-10 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <span class="relative z-10">All Products</span>
+                </a>
+                <a href="#" 
+                   class="category-filter px-6 py-3 rounded-full font-medium relative z-10 bg-white text-gray-700 border-2 border-gray-200 hover:border-teal-500 hover:shadow-xl transition-all duration-300">
+                    <span class="relative z-10">Bath Fittings</span>
+                </a>
+                <a href="#" 
+                   class="category-filter px-6 py-3 rounded-full font-medium relative z-10 bg-white text-gray-700 border-2 border-gray-200 hover:border-teal-500 hover:shadow-xl transition-all duration-300">
+                    <span class="relative z-10">Industrial</span>
+                </a>
+                <a href="#" 
+                   class="category-filter px-6 py-3 rounded-full font-medium relative z-10 bg-white text-gray-700 border-2 border-gray-200 hover:border-teal-500 hover:shadow-xl transition-all duration-300">
+                    <span class="relative z-10">Modern</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- End Hero Section -->
+
+    <!-- Products Grid - Modern Layout -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for i in range(6) %}
+                <div class="product-card">
+                    <div class="tilt-container">
+                        <div class="modern-image-container">
+                            <!-- Glowing Border -->
+                            <div class="glow-border"></div>
+                            
+                            <!-- Product Image -->
+                            <img src="https://via.placeholder.com/400x350/14b8a6/ffffff?text=Product+{{i+1}}" 
+                                 alt="Product {{i+1}}" 
+                                 class="modern-product-img">
+                            
+                            <!-- Shimmer Effect -->
+                            <div class="shimmer-effect"></div>
+                            
+                            <!-- Floating Particles -->
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            
+                            <!-- Product Name Overlay -->
+                            <div class="modern-name-overlay">
+                                <h2 class="modern-product-name">
+                                    Product {{i+1}}
+                                </h2>
+                                <div class="text-center">
+                                    <span class="modern-category-badge">
+                                        {% if i < 2 %}Bath Fittings{% elif i < 4 %}Industrial{% else %}Modern{% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+    
+    <script>
+        // Enhanced scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => observer.observe(card));
+            
+            // Add smooth scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Magnetic effect for cards
+            productCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
