@@ -1,0 +1,142 @@
+<nav class="custom-navbar glass-navbar animate-navbar">
+  <div class="navbar-container">
+    <div class="navbar-left">
+      <a href="/"><img src="/static/Koeta logo.png" alt="Koeta Logo" class="navbar-logo"></a>
+    </div>
+    <div class="navbar-links">
+      <a href="/" class="navbar-link slide-in-link">Home</a>
+      <a href="/about" class="navbar-link slide-in-link">About</a>
+      <a href="/products" class="navbar-link slide-in-link">Products</a>
+      <a href="/contact" class="navbar-link slide-in-link">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+.custom-navbar.glass-navbar {
+  background: rgba(0, 183, 194, 0.18);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-bottom: 2px solid rgba(0, 116, 183, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 116, 183, 0.18);
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  opacity: 0;
+  transform: translateY(-40px);
+  animation: navbarFadeIn 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s forwards;
+}
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  min-height: 70px;
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+.navbar-logo {
+  height: 48px;
+  width: auto;
+  border-radius: 10px;
+  /* background: #fff; */
+  box-shadow: 0 2px 8px 0 rgba(0, 183, 194, 0.10);
+  margin-right: 1rem;
+  transition: transform 0.3s;
+}
+.navbar-logo:hover {
+  transform: scale(1.08) rotate(-3deg);
+}
+.navbar-links {
+  display: flex;
+  gap: 2.5rem;
+}
+.navbar-link {
+  color: #0074B7;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  position: relative;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  transition: color 0.3s, background 0.3s, box-shadow 0.3s, transform 0.3s;
+  overflow: hidden;
+  background: rgba(255,255,255,0.12);
+}
+.navbar-link:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #00B7C2 0%, #0074B7 100%);
+  border-radius: 2px;
+  transition: width 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.navbar-link:hover {
+  color: #fff;
+  background: linear-gradient(90deg, #0074B7 0%, #00B7C2 100%);
+  box-shadow: 0 2px 12px 0 rgba(0, 183, 194, 0.10);
+  transform: translateY(-2px) scale(1.04);
+}
+.navbar-link:hover:after {
+  width: 100%;
+}
+.slide-in-link {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideInLink 0.7s forwards;
+}
+.slide-in-link:nth-child(1) { animation-delay: 0.3s; }
+.slide-in-link:nth-child(2) { animation-delay: 0.45s; }
+.slide-in-link:nth-child(3) { animation-delay: 0.6s; }
+.slide-in-link:nth-child(4) { animation-delay: 0.75s; }
+@keyframes slideInLink {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 900px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1rem;
+  }
+  .navbar-links {
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .navbar-logo {
+    height: 36px;
+  }
+  .navbar-links {
+    gap: 1rem;
+  }
+  .navbar-link {
+    font-size: 1rem;
+    padding: 0.4rem 0.5rem;
+  }
+}
+@keyframes navbarFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style> 

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Koeta Bath Fitting</title>
+    <link rel="icon" href="{{ url_for('static', filename='Koeta logo.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .contact-info-card {
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            box-shadow: 0 2px 12px 0 rgba(0, 183, 194, 0.10);
+            background: rgba(255,255,255,0.85);
+            border-radius: 1.5rem;
+            text-align: center;
+            padding-top: 2.5rem;
+        }
+        .contact-info-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 32px 0 rgba(0, 116, 183, 0.18);
+        }
+        .contact-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0074B7 0%, #00B7C2 100%);
+            box-shadow: 0 4px 24px 0 rgba(0,116,183,0.15);
+            position: relative;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .contact-info-card:hover .contact-icon-wrapper {
+            box-shadow: 0 8px 32px 0 rgba(0, 183, 194, 0.25), 0 0 0 8px rgba(0,183,194,0.08);
+            transform: scale(1.08) rotate(-6deg);
+        }
+        .contact-icon {
+            color: #fff !important;
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 8px #00B7C2);
+            transition: color 0.3s, filter 0.3s, transform 0.3s;
+        }
+        .contact-info-card:hover .contact-icon {
+            color: #fff;
+            filter: drop-shadow(0 0 16px #0074B7);
+            transform: scale(1.15) rotate(6deg);
+        }
+        .glass-section {
+            background: rgba(0, 183, 194, 0.10);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border-radius: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 116, 183, 0.10);
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            opacity: 0;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .form-gradient-card {
+            border-image: linear-gradient(90deg, #0074B7 0%, #00B7C2 100%) 1;
+            border-width: 2px;
+            border-style: solid;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 12px 0 rgba(0, 183, 194, 0.10);
+            border-radius: 1.5rem;
+        }
+        .contact-btn {
+            background: linear-gradient(90deg, #0074B7 0%, #00B7C2 100%);
+            color: #fff !important;
+            font-weight: 600;
+            border: none;
+            border-radius: 9999px;
+            box-shadow: 0 4px 24px 0 rgba(0,116,183,0.15);
+            transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+        .contact-btn:hover, .contact-btn:focus {
+            background: linear-gradient(90deg, #00B7C2 0%, #0074B7 100%);
+            box-shadow: 0 6px 32px 0 rgba(0,116,183,0.18);
+            transform: translateY(-2px) scale(1.04);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-white to-blue-50 font-roboto">
+    {% include 'menubar.html' %}
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-[#0074B7] to-[#00B7C2] text-white py-40 min-h-[80vh] flex items-center glass-section mb-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-6xl md:text-7xl font-bold mb-8">Contact Us</h1>
+            <p class="text-3xl">Get in touch with Koeta Bath Fitting</p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Our Location</h3>
+                    <p class="text-gray-600">Plot No. 5, Road No.5, GIDC Oorja Phase-I, Dared Jamnagar - 361012, Gujarat (IND)</p>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <span class="contact-icon"><i class="fas fa-phone"></i></span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Phone</h3>
+                    <p class="text-gray-600">+91 82049 370</p>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Email</h3>
+                    <p class="text-gray-600">info@keotabathfitting.com</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-blue-700">Send us a Message</h2>
+                    <form class="space-y-6 form-gradient-card p-8 shadow-2xl relative">
+                        <div class="relative">
+                            <input type="text" id="name" required class="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 bg-transparent placeholder-transparent transition duration-200" placeholder="Name">
+                            <label for="name" class="absolute left-4 top-2 text-gray-500 text-base transition-all duration-200 peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-700 bg-white px-1">Name</label>
+                        </div>
+                        <div class="relative">
+                            <input type="email" id="email" required class="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 bg-transparent placeholder-transparent transition duration-200" placeholder="Email">
+                            <label for="email" class="absolute left-4 top-2 text-gray-500 text-base transition-all duration-200 peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-700 bg-white px-1">Email</label>
+                        </div>
+                        <div class="relative">
+                            <input type="text" id="subject" required class="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 bg-transparent placeholder-transparent transition duration-200" placeholder="Subject">
+                            <label for="subject" class="absolute left-4 top-2 text-gray-500 text-base transition-all duration-200 peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-700 bg-white px-1">Subject</label>
+                        </div>
+                        <div class="relative">
+                            <textarea id="message" rows="4" required class="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 bg-transparent placeholder-transparent transition duration-200 resize-none" placeholder="Message"></textarea>
+                            <label for="message" class="absolute left-4 top-2 text-gray-500 text-base transition-all duration-200 peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-700 bg-white px-1">Message</label>
+                        </div>
+                        <button type="submit" class="w-full contact-btn py-3 shadow-lg text-lg tracking-wide mt-2">Send Message</button>
+                    </form>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-blue-700">Visit Us</h2>
+                    <div class="bg-white p-6 rounded-lg shadow-lg glass-section">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.964282365654!2d70.0570730751956!3d22.47070177956308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3957f5a2e2b2e2e1%3A0x7e2e2e2e2e2e2e2e!2sDared%2C%20Jamnagar%2C%20Gujarat%20361012!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+                            width="100%"
+                            height="400"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            class="rounded-lg"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Hours -->
+    <section class="py-16 bg-blue-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-700">Business Hours</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-lg glass-section">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Regular Hours</h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span class="text-gray-600">Monday - Friday</span>
+                            <span class="font-semibold">9:00 AM - 7:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-gray-600">Saturday</span>
+                            <span class="font-semibold">9:00 AM - 5:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-gray-600">Sunday</span>
+                            <span class="font-semibold">Closed</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg glass-section">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Special Hours</h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span class="text-gray-600">Public Holidays</span>
+                            <span class="font-semibold">10:00 AM - 2:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-gray-600">Festival Days</span>
+                            <span class="font-semibold">Closed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+    <script>
+        // Add animation classes on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('.contact-info-card').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html> 

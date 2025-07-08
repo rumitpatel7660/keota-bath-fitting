@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Koeta Bath Fitting</title>
+    <link rel="icon" href="{{ url_for('static', filename='Koeta logo.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Explore Koeta Bath Fitting's range of high-quality industrial bath fitting products.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Product Card Animations */
+        .product-card {
+            background: linear-gradient(135deg, #e0f7fa 0%, #f8fafc 100%);
+            border-radius: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0,183,194,0.13), 0 1.5px 6px 0 rgba(0,116,183,0.10);
+            border: 1.5px solid #00B7C2;
+            transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s cubic-bezier(0.4,0,0.2,1), border 0.5s cubic-bezier(0.4,0,0.2,1);
+            transform: translateY(0) scale(1);
+            position: relative;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            transform: translateY(-18px) scale(1.045) rotateZ(-1deg);
+            box-shadow: 0 16px 48px 0 rgba(0,183,194,0.22), 0 4px 24px 0 rgba(0,116,183,0.18);
+            border: 2.5px solid #0074B7;
+        }
+        .modern-image-container {
+            border-radius: 1.5rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, #00B7C2 0%, #0074B7 100%);
+            box-shadow: 0 4px 24px 0 rgba(0,183,194,0.10);
+            position: relative;
+        }
+        .modern-product-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.4,0,0.2,1), filter 0.7s cubic-bezier(0.4,0,0.2,1);
+            filter: brightness(0.97) contrast(1.04) saturate(1.08);
+        }
+        .product-card:hover .modern-product-img {
+            transform: scale(1.09) rotateZ(1.5deg);
+            filter: brightness(1.08) contrast(1.12) saturate(1.18);
+        }
+        .product-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(20,184,166,0.10) 0%, rgba(0,116,183,0.13) 100%);
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1);
+            z-index: 2;
+        }
+        .product-card:hover::before {
+            opacity: 1;
+        }
+        .glow-border {
+            display: none;
+        }
+        .modern-category-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #00B7C2 0%, #0074B7 100%);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 25px;
+            font-size: 0.92rem;
+            margin-top: 10px;
+            font-weight: 500;
+            border: 1.5px solid #00B7C2;
+            box-shadow: 0 1px 4px 0 rgba(0,183,194,0.08);
+            transition: background 0.3s, color 0.3s;
+        }
+        .product-card:hover .modern-category-badge {
+            background: linear-gradient(90deg, #0074B7 0%, #00B7C2 100%);
+            color: #fff;
+        }
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #14b8a6;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 4s ease-in-out infinite;
+        }
+        
+        .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 40%; right: 15%; animation-delay: 1s; }
+        .particle:nth-child(3) { top: 60%; left: 20%; animation-delay: 2s; }
+        .particle:nth-child(4) { top: 80%; right: 10%; animation-delay: 3s; }
+        
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translateY(0px) scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-20px) scale(1);
+                opacity: 0.8;
+            }
+        }
+        
+        .product-card:hover .particle {
+            animation-play-state: running;
+        }
+        
+        /* Modern Product Name Overlay */
+        .modern-name-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(0, 116, 183, 0.95), rgba(0, 183, 194, 0.95));
+            backdrop-filter: blur(15px);
+            color: white;
+            padding: 25px 20px;
+            transform: translateY(100%);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 3;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .product-card:hover .modern-name-overlay {
+            transform: translateY(0);
+            background: linear-gradient(135deg, rgba(0, 116, 183, 0.98), rgba(0, 183, 194, 0.98));
+        }
+        
+        .modern-product-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-align: center;
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+        }
+        
+        .product-card:hover .modern-product-name {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .product-subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            text-align: center;
+            margin: 8px 0 0 0;
+            opacity: 0.9;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+        
+        .product-card:hover .product-subtitle {
+            opacity: 0.9;
+            transform: translateY(0);
+        }
+        
+        /* Product Name Badge */
+        .product-name-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, rgba(0, 116, 183, 0.9), rgba(0, 183, 194, 0.9));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transform: translateY(-10px) scale(0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
+        }
+        
+        .product-card:hover .product-name-badge {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        /* Floating Product Name */
+        .floating-product-name {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(135deg, rgba(0, 116, 183, 0.95), rgba(0, 183, 194, 0.95));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5;
+            white-space: nowrap;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .product-card:hover .floating-product-name {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        /* Product Name Glow Effect */
+        .product-name-glow {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00B7C2, #0074B7, #00B7C2);
+            transform: scaleX(0);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
+        }
+        
+        .product-card:hover .product-name-glow {
+            transform: scaleX(1);
+        }
+        
+        /* Product Name Typing Effect */
+        .typing-effect {
+            overflow: hidden;
+            border-right: 2px solid rgba(255, 255, 255, 0.8);
+            white-space: nowrap;
+            animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: rgba(255, 255, 255, 0.8); }
+        }
+        
+        /* Modern Category Badge */
+        .modern-category-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .modern-category-badge:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+        
+        /* Shimmer Effect */
+        .shimmer-effect {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            transition: left 1s ease;
+            z-index: 3;
+        }
+        
+        .product-card:hover .shimmer-effect {
+            left: 100%;
+        }
+        
+        /* Category filter styling */
+        .category-filter {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-filter::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+        }
+        
+        .category-filter:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* 3D Tilt Effect */
+        .tilt-container {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .tilt-container:hover {
+            transform: rotateX(5deg) rotateY(5deg);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .modern-image-container {
+                border-radius: 15px;
+            }
+            
+            .modern-name-overlay {
+                transform: translateY(0);
+                background: linear-gradient(135deg, rgba(0, 116, 183, 0.95), rgba(0, 183, 194, 0.95));
+                padding: 20px 15px;
+            }
+            
+            .modern-product-name {
+                font-size: 1.1rem;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .product-subtitle {
+                font-size: 0.8rem;
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+            
+            .product-name-badge {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            
+            .floating-product-name {
+                display: none;
+            }
+            
+            .product-card:hover .modern-image-container {
+                transform: translateY(-5px) scale(1.01);
+            }
+            
+            .product-card:hover .modern-product-img {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .product-card,
+            .modern-image-container,
+            .modern-product-img,
+            .shimmer-effect,
+            .particle {
+                animation: none;
+                transition: none;
+            }
+            
+            .product-card:hover .modern-image-container,
+            .product-card:hover .modern-product-img,
+            .product-card:hover .modern-name-overlay {
+                transform: none;
+            }
+        }
+        
+        .category-theme {
+            background: linear-gradient(90deg, #0074B7 0%, #00B7C2 100%) !important;
+            color: #fff !important;
+            box-shadow: 0 4px 24px 0 rgba(0,116,183,0.10);
+        }
+        .category-filter:hover, .category-filter:focus {
+            background: linear-gradient(90deg, #00B7C2 0%, #0074B7 100%) !important;
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-50 to-white font-roboto">
+    {% include 'menubar.html' %}
+    
+    <!-- Hero Section with Product Image and Overlay -->
+    <section class="relative h-screen flex flex-col items-center justify-center mb-8 glass-section">
+        <img src="{{ url_for('static', filename='products.jpg') }}" alt="Product Hero" class="absolute inset-0 w-full h-full object-fit object-center z-0">
+        <div class="absolute inset-0 bg-gray-900 opacity-20 z-10"></div>
+        <div class="relative z-20 w-full text-center flex flex-col items-center justify-center h-full">
+            <h1 class="text-4xl md:text-6xl font-montserrat font-bold text-white drop-shadow-lg mb-4">Our Products</h1>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-600 mx-auto rounded-full mb-8"></div>
+            <!-- Category Filters (now in hero) -->
+            <div class="flex flex-wrap justify-center gap-4 mb-0">
+                <button class="category-filter px-6 py-3 rounded-full font-medium relative z-10 bg-white text-blue-700 border-2 border-blue-200 hover:border-blue-500 hover:shadow-xl transition-all duration-300" data-category="all">All Products</button>
+                {% for cat in categories %}
+                <button class="category-filter px-6 py-3 rounded-full font-medium relative z-10 bg-white text-blue-700 border-2 border-blue-200 hover:border-blue-500 hover:shadow-xl transition-all duration-300" data-category="{{cat}}">{{cat.replace('-', ' ').title()}}</button>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- End Hero Section -->
+
+    <!-- Products Grid - Modern Layout -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="products-grid">
+                {% for category, images in products_by_category.items() %}
+                    {% for img in images %}
+                    <div class="product-card group" data-category="{{category}}">
+                        <div class="tilt-container">
+                            <div class="modern-image-container relative overflow-hidden">
+                                <div class="glow-border"></div>
+                                <img src="{{ url_for('static', filename=img) }}" alt="{{category}} product" class="modern-product-img group-hover:scale-110 group-hover:rotate-2 transition-transform duration-700 ease-in-out">
+                                <div class="shimmer-effect"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                
+                                <!-- Product Name Badge -->
+                                <div class="product-name-badge">
+                                    {{category.replace('-', ' ').title()}}
+                                </div>
+                                
+                                <!-- Floating Product Name -->
+                                <!-- <div class="floating-product-name">
+                                    {{category.replace('-', ' ').title()}} Product
+                                </div> -->
+                                
+                                <!-- Product Name Overlay -->
+                                <div class="modern-name-overlay">
+                                    <h4 class="modern-product-name">
+                                        {{img.split('/')[-1].split('.')[0].replace('-', ' ').replace('_', ' ').title()}}
+                                    </h4>
+                                </div>
+                                
+                                <!-- Product Name Glow Effect -->
+                                <div class="product-name-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+    
+    <script>
+        // Enhanced scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => observer.observe(card));
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Enhanced product card interactions
+            productCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    
+                    // Parallax effect for floating product name
+                    const floatingName = card.querySelector('.floating-product-name');
+                    if (floatingName) {
+                        const moveX = (x - centerX) / 20;
+                        const moveY = (y - centerY) / 20;
+                        floatingName.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) scale(1)`;
+                    }
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                    
+                    // Reset floating product name position
+                    const floatingName = card.querySelector('.floating-product-name');
+                    if (floatingName) {
+                        floatingName.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                    }
+                });
+                
+                // Add click effect for product names
+                card.addEventListener('click', () => {
+                    const productName = card.querySelector('.modern-product-name');
+                    if (productName) {
+                        productName.style.transform = 'scale(1.05)';
+                        setTimeout(() => {
+                            productName.style.transform = 'scale(1)';
+                        }, 200);
+                    }
+                });
+            });
+            // Category filter logic
+            const filterButtons = document.querySelectorAll('.category-filter');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const cat = this.getAttribute('data-category');
+                    productCards.forEach(card => {
+                        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                            card.style.display = '';
+                            setTimeout(() => { card.style.opacity = '1'; }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            setTimeout(() => { card.style.display = 'none'; }, 400);
+                        }
+                    });
+                    filterButtons.forEach(b => b.classList.remove('category-theme'));
+                    this.classList.add('category-theme');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
