@@ -26,45 +26,45 @@
             to { opacity: 1; transform: translateX(0); }
         }
         .btn-theme {
-            background: linear-gradient(90deg, #0074B7 0%, #00B7C2 100%);
+            background: linear-gradient(90deg, #15B5C6 0%, #66C4D9 100%);
             color: #fff !important;
             font-weight: 600;
             border: none;
             border-radius: 9999px;
-            box-shadow: 0 4px 24px 0 rgba(0,116,183,0.15);
+            box-shadow: 0 4px 24px 0 rgba(21,181,198,0.15);
             transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
         }
         .btn-theme:hover, .btn-theme:focus {
-            background: linear-gradient(90deg, #00B7C2 0%, #0074B7 100%);
-            box-shadow: 0 6px 32px 0 rgba(0,116,183,0.18);
+            background: linear-gradient(90deg, #66C4D9 0%, #15B5C6 100%);
+            box-shadow: 0 6px 32px 0 rgba(21,181,198,0.18);
             transform: translateY(-2px) scale(1.04);
         }
         .icon-theme {
-            color: #0074B7 !important;
-            filter: drop-shadow(0 0 6px #00B7C2);
+            color: #15B5C6 !important;
+            filter: drop-shadow(0 0 6px #66C4D9);
             transition: color 0.3s, filter 0.3s;
         }
         .icon-theme:hover {
-            color: #00B7C2 !important;
-            filter: drop-shadow(0 0 12px #0074B7);
+            color: #66C4D9 !important;
+            filter: drop-shadow(0 0 12px #15B5C6);
         }
         .glass-section {
-            background: rgba(0, 183, 194, 0.10);
+            background: rgba(21, 181, 198, 0.10);
             backdrop-filter: blur(12px) saturate(180%);
             -webkit-backdrop-filter: blur(12px) saturate(180%);
             border-radius: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(0, 116, 183, 0.10);
+            box-shadow: 0 8px 32px 0 rgba(21, 181, 198, 0.10);
         }
         .cta-bg {
             position: relative;
-            background: linear-gradient(90deg, #e0f7fa 0%, #b0e6e6 100%);
+            background: linear-gradient(90deg, #E6E4E1 0%, #f5f5f5 100%);
             overflow: hidden;
         }
         .cta-bg::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0, 183, 194, 0.18);
+            background: rgba(21, 181, 198, 0.18);
             pointer-events: none;
             z-index: 0;
         }
@@ -75,17 +75,17 @@
         /* Card hover effect */
         .feature-card {
             transition: box-shadow 0.3s, transform 0.3s;
-            box-shadow: 0 2px 12px 0 rgba(0, 183, 194, 0.10);
+            box-shadow: 0 2px 12px 0 rgba(21, 181, 198, 0.10);
         }
         .feature-card:hover {
-            box-shadow: 0 8px 32px 0 rgba(0, 116, 183, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(21, 181, 198, 0.18);
             transform: translateY(-6px) scale(1.03);
         }
         /* Our Process Card Modern Style */
         .process-card {
             background: rgba(255,255,255,0.95);
             border-radius: 1.25rem;
-            box-shadow: 0 2px 12px 0 rgba(0, 183, 194, 0.10);
+            box-shadow: 0 2px 12px 0 rgba(21, 181, 198, 0.10);
             padding: 2.5rem 1.5rem 2rem 1.5rem;
             text-align: center;
             position: relative;
@@ -101,14 +101,14 @@
         .process-card .process-icon {
             font-size: 2.5rem;
             margin-bottom: 1.2rem;
-            color: #0074B7;
+            color: #15B5C6;
             transition: color 0.4s, filter 0.4s;
-            filter: drop-shadow(0 0 6px #00B7C2);
+            filter: drop-shadow(0 0 6px #66C4D9);
         }
         .process-card .process-title {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #0074B7;
+            color: #15B5C6;
             margin-bottom: 0.5rem;
             transition: color 0.4s;
         }
@@ -122,8 +122,8 @@
             pointer-events: none;
         }
         .process-card:hover {
-            background: linear-gradient(120deg, #0074B7 0%, #00B7C2 100%);
-            box-shadow: 0 8px 32px 0 rgba(0, 116, 183, 0.18);
+            background: linear-gradient(120deg, #15B5C6 0%, #66C4D9 100%);
+            box-shadow: 0 8px 32px 0 rgba(21, 181, 198, 0.18);
             color: #fff;
             transform: translateY(-6px) scale(1.04);
         }
@@ -146,17 +146,17 @@
         }
         /* Call to Action Modern Glassy Background */
         .cta-glass {
-            background: linear-gradient(135deg, #e3f2fd 0%, #b3e5fc 100%);
+            background: linear-gradient(135deg, #E6E4E1 0%, #f8f8f8 100%);
             position: relative;
             border-radius: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(0, 116, 183, 0.10);
+            box-shadow: 0 8px 32px 0 rgba(21, 181, 198, 0.10);
             overflow: hidden;
         }
         .cta-glass::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0, 183, 194, 0.10);
+            background: rgba(21, 181, 198, 0.10);
             backdrop-filter: blur(10px) saturate(180%);
             -webkit-backdrop-filter: blur(10px) saturate(180%);
             z-index: 0;
@@ -165,13 +165,22 @@
             position: relative;
             z-index: 1;
         }
+        /* Chrome/Silver gradient for metallic effects */
+        .chrome-gradient {
+            background: linear-gradient(135deg, #C0C0C0 0%, #E0E0E0 50%, #C0C0C0 100%);
+        }
+        .chrome-border {
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #C0C0C0, #E0E0E0, #C0C0C0) 1;
+        }
     </style>
+    <script src="{{ url_for('static', filename='animations.js') }}"></script>
 </head>
-<body class="bg-gradient-to-br from-white to-blue-50 text-gray-800 font-roboto">
+<body class="bg-gradient-to-br from-white to-gray-50 text-gray-800 font-roboto">
     {% include 'menubar.html' %}
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden glass-section mb-12">
+    <section id="hero-section" class="relative h-screen flex items-center justify-center overflow-hidden glass-section mb-12 shine-scroll-reveal scroll-fade-in">
         <video
             class="absolute inset-0 w-full h-full object-cover object-fit"
             src="{{ url_for('static', filename='hero_section.mp4') }}"
@@ -186,82 +195,82 @@
         ></video>
         <div class="absolute inset-0 bg-gray-900" style="opacity: 0.6;"></div>
         <div class="relative z-10 w-full text-center flex flex-col items-center justify-center h-full">
-            <h1 class="text-5xl md:text-6xl font-montserrat font-bold text-white drop-shadow-lg mb-4 fade-in-up">Keota Bath Fitting</h1>
+            <h1 class="shatter-title text-5xl md:text-6xl font-montserrat font-bold text-white drop-shadow-lg mb-4 fade-in-up">Keota  Bath  Fitting</h1>
             <!-- <p class="text-xl md:text-2xl text-blue-800 font-roboto drop-shadow-md mb-8 fade-in-up" style="animation-delay:0.2s;">Excellence in Bath Fittings & Accessories</p> -->
-            <a href="/products" class="fade-in-up mt-2 inline-block btn-theme px-8 py-3 shadow-lg" style="animation-delay:0.4s; animation-fill-mode: both;">Explore Products</a>
+            <a href="/products" class="fade-in-up mt-2 inline-block btn-theme px-8 py-3 shadow-lg cta-shine-btn" style="animation-delay:0.4s; animation-fill-mode: both;">Explore Products</a>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="max-w-6xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white glass-section feature-card p-8 flex flex-col items-center slide-in-left">
+    <section id="features-section" class="max-w-6xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-8 shine-scroll-reveal scroll-fade-in">
+        <div class="bg-white glass-section feature-card glass-float p-8 flex flex-col items-center fade-left scroll-fade-in">
             <svg class="w-12 h-12 icon-theme mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            <h3 class="font-semibold text-blue-700 mb-2">Quality Assured</h3>
-            <p class="text-gray-500 text-center">Premium materials and strict quality control for every product.</p>
+            <h3 class="font-semibold text-gray-800 mb-2">Quality Assured</h3>
+            <p class="text-gray-600 text-center">Premium materials and strict quality control for every product.</p>
         </div>
-        <div class="bg-white glass-section feature-card p-8 flex flex-col items-center fade-in-up">
+        <div class="bg-white glass-section feature-card glass-float p-8 flex flex-col items-center fade-up scroll-fade-in">
             <svg class="w-12 h-12 icon-theme mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8"/></svg>
-            <h3 class="font-semibold text-blue-700 mb-2">Modern Design</h3>
-            <p class="text-gray-500 text-center">Sleek, innovative, and functional bath fitting solutions.</p>
+            <h3 class="font-semibold text-gray-800 mb-2">Modern Design</h3>
+            <p class="text-gray-600 text-center">Sleek, innovative, and functional bath fitting solutions.</p>
         </div>
-        <div class="bg-white glass-section feature-card p-8 flex flex-col items-center slide-in-right">
+        <div class="bg-white glass-section feature-card glass-float p-8 flex flex-col items-center fade-right scroll-fade-in">
             <svg class="w-12 h-12 icon-theme mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-            <h3 class="font-semibold text-blue-700 mb-2">Trusted Service</h3>
-            <p class="text-gray-500 text-center">Reliable support and on-time delivery for every client.</p>
+            <h3 class="font-semibold text-gray-800 mb-2">Trusted Service</h3>
+            <p class="text-gray-600 text-center">Reliable support and on-time delivery for every client.</p>
         </div>
     </section>
 
     <!-- Product Highlights Section -->
-    <section class="max-w-7xl mx-auto px-4 py-12">
-        <h2 class="text-3xl font-montserrat font-bold text-blue-700 text-center mb-10 fade-in-up">Featured Product Categories</h2>
+    <section id="product-highlights" class="max-w-7xl mx-auto px-4 py-12 shine-scroll-reveal scroll-fade-in">
+        <h2 class="text-3xl font-montserrat font-bold text-gray-800 text-center mb-10 fade-in-up">Featured Product Categories</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="bg-blue-50 glass-section feature-card rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300 fade-in-up">
+            <div class="bg-gray-50 glass-section feature-card product-tilt rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300 fade-left scroll-fade-in">
                 <!-- Faucet SVG -->
                 <svg class="w-14 h-14 mb-3 icon-theme" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48"><rect x="8" y="30" width="32" height="6" rx="2"/><rect x="20" y="18" width="8" height="12" rx="2"/><path d="M24 18v-6a6 6 0 0 1 12 0v2"/><circle cx="36" cy="12" r="2"/></svg>
-                <h4 class="font-semibold text-blue-700 mb-1">Faucets</h4>
+                <h4 class="font-semibold text-gray-800 mb-1">Faucets</h4>
                 <p class="text-gray-600 text-center text-sm">Durable, stylish, and water-efficient faucets for every application.</p>
             </div>
-            <div class="bg-blue-50 glass-section feature-card rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay:0.1s;">
+            <div class="bg-gray-50 glass-section feature-card product-tilt rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300 fade-up scroll-fade-in" style="animation-delay:0.1s;">
                 <!-- Valve SVG -->
                 <svg class="w-14 h-14 mb-3 icon-theme" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48"><rect x="14" y="20" width="20" height="8" rx="2"/><rect x="10" y="28" width="28" height="6" rx="2"/><circle cx="24" cy="16" r="4"/><path d="M24 12V8M24 36v4"/></svg>
-                <h4 class="font-semibold text-blue-700 mb-1">Valves</h4>
+                <h4 class="font-semibold text-gray-800 mb-1">Valves</h4>
                 <p class="text-gray-600 text-center text-sm">Precision-engineered valves for industrial and residential use.</p>
             </div>
-            <div class="bg-blue-50 glass-section feature-card rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay:0.2s;">
+            <div class="bg-gray-50 glass-section feature-card product-tilt rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300 fade-right scroll-fade-in" style="animation-delay:0.2s;">
                 <!-- Pipes & Fittings SVG -->
                 <svg class="w-14 h-14 mb-3 icon-theme" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48"><rect x="8" y="20" width="8" height="16" rx="2"/><rect x="32" y="12" width="8" height="24" rx="2"/><rect x="20" y="28" width="8" height="8" rx="2"/><path d="M12 20V12a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4v8"/></svg>
-                <h4 class="font-semibold text-blue-700 mb-1">Pipes & Fittings</h4>
+                <h4 class="font-semibold text-gray-800 mb-1">Pipes & Fittings</h4>
                 <p class="text-gray-600 text-center text-sm">High-quality pipes and fittings for robust plumbing solutions.</p>
             </div>
-            <div class="bg-blue-50 glass-section feature-card rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay:0.3s;">
+            <div class="bg-gray-50 glass-section feature-card product-tilt rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300 fade-up scroll-fade-in" style="animation-delay:0.3s;">
                 <!-- Showers & Accessories SVG -->
-                <svg class="w-14 h-14 mb-3 icon-theme" fill="none" stroke="#0074B7" stroke-width="2" viewBox="0 0 48 48"><circle cx="24" cy="16" r="4"/><rect x="20" y="20" width="8" height="8" rx="2"/><path d="M24 28v8"/><circle cx="24" cy="40" r="2"/><circle cx="16" cy="36" r="2"/><circle cx="32" cy="36" r="2"/></svg>
-                <h4 class="font-semibold text-blue-700 mb-1">Showers & Accessories</h4>
+                <svg class="w-14 h-14 mb-3 icon-theme" fill="none" stroke="#15B5C6" stroke-width="2" viewBox="0 0 48 48"><circle cx="24" cy="16" r="4"/><rect x="20" y="20" width="8" height="8" rx="2"/><path d="M24 28v8"/><circle cx="24" cy="40" r="2"/><circle cx="16" cy="36" r="2"/><circle cx="32" cy="36" r="2"/></svg>
+                <h4 class="font-semibold text-gray-800 mb-1">Showers & Accessories</h4>
                 <p class="text-gray-600 text-center text-sm">Modern showers and accessories for a luxurious experience.</p>
             </div>
         </div>
     </section>
 
     <!-- Our Process Section -->
-    <section class="max-w-6xl mx-auto px-4 py-16">
-        <h2 class="text-3xl font-montserrat font-bold text-blue-700 text-center mb-10 fade-in-up">Our Process</h2>
+    <section id="our-process" class="max-w-6xl mx-auto px-4 py-16 shine-scroll-reveal scroll-fade-in">
+        <h2 class="text-3xl font-montserrat font-bold text-gray-800 text-center mb-10 fade-in-up">Our Process</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="process-card feature-card fade-in-up">
+            <div class="process-card feature-card fade-left scroll-fade-in">
                 <span class="process-icon"><svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span>
                 <div class="process-title">Consultation</div>
                 <div class="process-desc">We listen to your needs and provide expert advice for the best solutions.</div>
             </div>
-            <div class="process-card feature-card fade-in-up" style="animation-delay:0.1s;">
+            <div class="process-card feature-card fade-up scroll-fade-in" style="animation-delay:0.1s;">
                 <span class="process-icon"><svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></span>
                 <div class="process-title">Design</div>
                 <div class="process-desc">Our team creates modern, functional, and beautiful bath fitting designs.</div>
             </div>
-            <div class="process-card feature-card fade-in-up" style="animation-delay:0.2s;">
+            <div class="process-card feature-card fade-up scroll-fade-in" style="animation-delay:0.2s;">
                 <span class="process-icon"><svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><rect x="7" y="9" width="10" height="8" rx="2"/><path d="M12 5v4"/></svg></span>
                 <div class="process-title">Manufacturing</div>
                 <div class="process-desc">We use advanced technology and quality materials for every product.</div>
             </div>
-            <div class="process-card feature-card fade-in-up" style="animation-delay:0.3s;">
+            <div class="process-card feature-card fade-right scroll-fade-in" style="animation-delay:0.3s;">
                 <span class="process-icon"><svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><rect x="7" y="9" width="10" height="8" rx="2"/><path d="M12 5v4"/></svg></span>
                 <div class="process-title">Delivery</div>
                 <div class="process-desc">On-time, safe, and reliable delivery to your location, every time.</div>
@@ -270,11 +279,11 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="py-24 cta-glass mb-0 pb-0" style="min-height: 320px;">
+    <section id="cta-section" class="py-24 cta-glass mb-0 pb-0 shine-scroll-reveal scroll-fade-in fade-up" style="min-height: 320px;">
         <div class="max-w-2xl mx-auto px-4 text-center">
-            <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4 font-montserrat fade-in-up">Ready to Upgrade Your Bath Fittings?</h2>
-            <p class="text-blue-700 mb-6 fade-in-up">Contact us today for a quote or to discuss your requirements with our experts.</p>
-            <a href="/contact" class="inline-block btn-theme px-8 py-3 shadow-lg fade-in-up">Contact Us</a>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 font-montserrat fade-in-up">Ready to Upgrade Your Bath Fittings?</h2>
+            <p class="text-gray-700 mb-6 fade-in-up">Contact us today for a quote or to discuss your requirements with our experts.</p>
+            <a href="/contact" class="inline-block btn-theme px-8 py-3 shadow-lg fade-in-up cta-shine-btn">Contact Us</a>
         </div>
     </section>
 

@@ -12,10 +12,10 @@
     <style>
         /* Modern Product Card Animations */
         .product-card {
-            background: linear-gradient(135deg, #e0f7fa 0%, #f8fafc 100%);
+            background: linear-gradient(135deg, #E6E4E1 0%, #f8fafc 100%);
             border-radius: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(0,183,194,0.13), 0 1.5px 6px 0 rgba(0,116,183,0.10);
-            border: 1.5px solid #00B7C2;
+            box-shadow: 0 8px 32px 0 rgba(21,181,198,0.13), 0 1.5px 6px 0 rgba(21,181,198,0.10);
+            border: 1.5px solid #15B5C6;
             transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s cubic-bezier(0.4,0,0.2,1), border 0.5s cubic-bezier(0.4,0,0.2,1);
             transform: translateY(0) scale(1);
             position: relative;
@@ -23,14 +23,14 @@
         }
         .product-card:hover {
             transform: translateY(-18px) scale(1.045) rotateZ(-1deg);
-            box-shadow: 0 16px 48px 0 rgba(0,183,194,0.22), 0 4px 24px 0 rgba(0,116,183,0.18);
-            border: 2.5px solid #0074B7;
+            box-shadow: 0 16px 48px 0 rgba(21,181,198,0.22), 0 4px 24px 0 rgba(21,181,198,0.18);
+            border: 2.5px solid #15B5C6;
         }
         .modern-image-container {
             border-radius: 1.5rem;
             overflow: hidden;
-            background: linear-gradient(135deg, #00B7C2 0%, #0074B7 100%);
-            box-shadow: 0 4px 24px 0 rgba(0,183,194,0.10);
+            background: linear-gradient(135deg, #15B5C6 0%, #66C4D9 100%);
+            box-shadow: 0 4px 24px 0 rgba(21,181,198,0.10);
             position: relative;
         }
         .modern-product-img {
@@ -48,7 +48,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(120deg, rgba(20,184,166,0.10) 0%, rgba(0,116,183,0.13) 100%);
+            background: linear-gradient(120deg, rgba(21,181,198,0.10) 0%, rgba(102,196,217,0.13) 100%);
             opacity: 0;
             transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1);
             z-index: 2;
@@ -61,19 +61,19 @@
         }
         .modern-category-badge {
             display: inline-block;
-            background: linear-gradient(90deg, #00B7C2 0%, #0074B7 100%);
+            background: linear-gradient(90deg, #15B5C6 0%, #66C4D9 100%);
             color: #fff;
             padding: 6px 18px;
             border-radius: 25px;
             font-size: 0.92rem;
             margin-top: 10px;
             font-weight: 500;
-            border: 1.5px solid #00B7C2;
-            box-shadow: 0 1px 4px 0 rgba(0,183,194,0.08);
+            border: 1.5px solid #15B5C6;
+            box-shadow: 0 1px 4px 0 rgba(21,181,198,0.08);
             transition: background 0.3s, color 0.3s;
         }
         .product-card:hover .modern-category-badge {
-            background: linear-gradient(90deg, #0074B7 0%, #00B7C2 100%);
+            background: linear-gradient(90deg, #66C4D9 0%, #15B5C6 100%);
             color: #fff;
         }
         /* Floating Particles */
@@ -81,7 +81,7 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: #14b8a6;
+            background: #15B5C6;
             border-radius: 50%;
             opacity: 0;
             animation: particleFloat 4s ease-in-out infinite;
@@ -113,7 +113,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(135deg, rgba(0, 116, 183, 0.95), rgba(0, 183, 194, 0.95));
+            background: linear-gradient(135deg, rgba(21, 181, 198, 0.95), rgba(102, 196, 217, 0.95));
             backdrop-filter: blur(15px);
             color: white;
             padding: 25px 20px;
@@ -125,7 +125,7 @@
         
         .product-card:hover .modern-name-overlay {
             transform: translateY(0);
-            background: linear-gradient(135deg, rgba(0, 116, 183, 0.98), rgba(0, 183, 194, 0.98));
+            background: linear-gradient(135deg, rgba(21, 181, 198, 0.98), rgba(102, 196, 217, 0.98));
         }
         
         .modern-product-name {
@@ -169,7 +169,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: linear-gradient(135deg, rgba(0, 116, 183, 0.9), rgba(0, 183, 194, 0.9));
+            background: linear-gradient(135deg, rgba(21, 181, 198, 0.9), rgba(102, 196, 217, 0.9));
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -194,7 +194,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.8);
-            background: linear-gradient(135deg, rgba(0, 116, 183, 0.95), rgba(0, 183, 194, 0.95));
+            background: linear-gradient(135deg, rgba(21, 181, 198, 0.95), rgba(102, 196, 217, 0.95));
             color: white;
             padding: 15px 25px;
             border-radius: 15px;
@@ -222,7 +222,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #00B7C2, #0074B7, #00B7C2);
+            background: linear-gradient(90deg, #15B5C6, #66C4D9, #15B5C6);
             transform: scaleX(0);
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 4;
@@ -327,7 +327,7 @@
             
             .modern-name-overlay {
                 transform: translateY(0);
-                background: linear-gradient(135deg, rgba(0, 116, 183, 0.95), rgba(0, 183, 194, 0.95));
+                background: linear-gradient(135deg, rgba(21, 181, 198, 0.95), rgba(102, 196, 217, 0.95));
                 padding: 20px 15px;
             }
             
@@ -382,12 +382,12 @@
         }
         
         .category-theme {
-            background: linear-gradient(90deg, #0074B7 0%, #00B7C2 100%) !important;
+            background: linear-gradient(90deg, #15B5C6 0%, #66C4D9 100%) !important;
             color: #fff !important;
-            box-shadow: 0 4px 24px 0 rgba(0,116,183,0.10);
+            box-shadow: 0 4px 24px 0 rgba(21,181,198,0.10);
         }
         .category-filter:hover, .category-filter:focus {
-            background: linear-gradient(90deg, #00B7C2 0%, #0074B7 100%) !important;
+            background: linear-gradient(90deg, #66C4D9 0%, #15B5C6 100%) !important;
             color: #fff !important;
         }
     </style>

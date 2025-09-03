@@ -8,48 +8,72 @@
   <link rel="icon" href="{{ url_for('static', filename='Koeta logo.png') }}">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <script src="{{ url_for('static', filename='animations.js') }}"></script>
   <style>
     .font-montserrat { font-family: 'Montserrat', sans-serif; }
     .font-roboto { font-family: 'Roboto', sans-serif; }
-    
-    /* Animation classes */
-    .about-bounce-left {
-      animation: slideInLeft 1s ease-out;
+    /* --- Shine Animation --- */
+    .shine-reveal {
+      position: relative;
+      overflow: hidden;
     }
-    .about-bounce-right {
-      animation: slideInRight 1s ease-out;
+    .shine-reveal::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%; height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-20deg);
+      z-index: 2;
+      pointer-events: none;
     }
-    .card-animate {
-      animation: fadeInUp 0.8s ease-out;
+    .shine-animate.shine-reveal::before {
+      animation: shine-move 1.2s cubic-bezier(0.4,0,0.2,1);
     }
-    .whyus-float-img {
-      animation: float 3s ease-in-out infinite;
+    @keyframes shine-move {
+      0% { left: -75%; }
+      100% { left: 120%; }
     }
-    .whyus-list-item {
-      animation: slideInUp 0.6s ease-out;
+    /* --- Morphing Blob --- */
+    .blob-bg {
+      position: absolute;
+      top: -30px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+      width: 180px; height: 140px;
+      pointer-events: none;
     }
-    
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-50px); }
-      to { opacity: 1; transform: translateX(0); }
+    /* --- Pulse Animation --- */
+    .pulse-float {
+      animation: pulse-float 2.5s infinite ease-in-out;
     }
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(50px); }
-      to { opacity: 1; transform: translateX(0); }
+    @keyframes pulse-float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-10px) scale(1.04); }
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* --- 3D Float In --- */
+    .fadeInUp {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+    .fadeInUp.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-    @keyframes slideInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* --- Slide In Left --- */
+    .slideInLeft {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
     }
-    
+    .slideInLeft.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    /* --- General --- */
+    .scroll-reveal { opacity: 0; }
+    .scroll-reveal.visible { opacity: 1; transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1); }
     .animate-fade-in {
       animation: fadeIn 1s ease-out;
     }
@@ -59,74 +83,74 @@
     }
     /* Modern theme overrides */
     .glass-section {
-      background: rgba(0, 183, 194, 0.10);
+      background: rgba(21, 181, 198, 0.10);
       backdrop-filter: blur(12px) saturate(180%);
       -webkit-backdrop-filter: blur(12px) saturate(180%);
       border-radius: 2rem;
-      box-shadow: 0 8px 32px 0 rgba(0, 116, 183, 0.10);
+      box-shadow: 0 8px 32px 0 rgba(21, 181, 198, 0.10);
     }
     .about-hero-title {
-      color: #0074B7;
-      text-shadow: 0 2px 8px #b0e6e6;
+      color: #15B5C6;
+      text-shadow: 0 2px 8px #E6E4E1;
     }
     .about-hero-bg {
-      background: linear-gradient(90deg, #e0f7fa 0%, #b0e6e6 100%);
+      background: linear-gradient(90deg, #E6E4E1 0%, #f5f5f5 100%);
     }
     .about-section-title {
-      color: #0074B7;
+      color: #15B5C6;
       letter-spacing: 1px;
     }
     .about-card {
       background: rgba(255,255,255,0.85);
       border-radius: 1.5rem;
-      box-shadow: 0 2px 12px 0 rgba(0, 183, 194, 0.10);
+      box-shadow: 0 2px 12px 0 rgba(21, 181, 198, 0.10);
       transition: box-shadow 0.3s, transform 0.3s;
     }
     .about-card:hover {
-      box-shadow: 0 8px 32px 0 rgba(0, 116, 183, 0.18);
+      box-shadow: 0 8px 32px 0 rgba(21, 181, 198, 0.18);
       transform: translateY(-6px) scale(1.03);
     }
     .about-icon {
-      color: #0074B7;
-      filter: drop-shadow(0 0 6px #00B7C2);
+      color: #15B5C6;
+      filter: drop-shadow(0 0 6px #66C4D9);
       transition: color 0.3s, filter 0.3s;
     }
     .about-icon:hover {
-      color: #00B7C2;
-      filter: drop-shadow(0 0 12px #0074B7);
+      color: #66C4D9;
+      filter: drop-shadow(0 0 12px #15B5C6);
     }
     .about-badge {
-      background: linear-gradient(90deg, #0074B7 0%, #00B7C2 100%);
+      background: linear-gradient(90deg, #15B5C6 0%, #66C4D9 100%);
       color: #fff;
       border-radius: 9999px;
       padding: 0.25em 1em;
       font-weight: 600;
       font-size: 0.9rem;
-      box-shadow: 0 2px 8px 0 rgba(0, 183, 194, 0.10);
+      box-shadow: 0 2px 8px 0 rgba(21, 181, 198, 0.10);
     }
     .about-list-item {
-      background: rgba(0, 183, 194, 0.08);
+      background: rgba(21, 181, 198, 0.08);
       border-radius: 1rem;
       transition: background 0.3s, color 0.3s;
     }
     .about-list-item:hover {
-      background: linear-gradient(90deg, #0074B7 0%, #00B7C2 100%);
+      background: linear-gradient(90deg, #15B5C6 0%, #66C4D9 100%);
       color: #fff;
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-white to-blue-50 font-roboto">
+<body class="bg-gradient-to-br from-white to-gray-50 font-roboto">
   <div style="z-index:50; position:relative;">
     {% include 'menubar.html' %}
   </div>
   
   <!-- Hero Section -->
-  <section class="relative min-h-[600px] md:h-[40rem] flex items-center justify-center mb-12 glass-section about-hero-bg overflow-hidden">
+  <section class="relative min-h-[600px] md:h-[40rem] flex items-center justify-center mb-12 glass-section about-hero-bg overflow-hidden scroll-reveal shine-reveal" id="about-hero">
     <img src="{{ url_for('static', filename='about.png') }}" alt="About Koeta Bath Fitting"
          class="absolute inset-0 w-full h-full object-cover object-top opacity-80" style="object-position: top center;">
     <div class="absolute inset-0 bg-gradient-to-br from-blue-900/60 via-cyan-700/40 to-white/10"></div>
     <div class="relative z-10 w-full text-center flex flex-col items-center justify-center h-full">
-      <h1 class="text-4xl md:text-5xl font-montserrat font-bold about-hero-title mb-4 drop-shadow-2xl" style="color:#fff;">About Koeta Bath Fitting</h1>
+      <h1 class="text-4xl md:text-5xl font-montserrat font-bold about-hero-title mb-4 drop-shadow-2xl shine-reveal" style="color:#fff;">About Koeta Bath Fitting</h1>
       <p class="text-lg md:text-2xl text-blue-100 font-roboto drop-shadow-lg">Excellence in Bath Fittings & Accessories</p>
     </div>
   </section>
@@ -135,7 +159,7 @@
   <section class="w-full bg-white py-16">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
       <!-- Left: Text -->
-      <div class="md:w-3/5 w-full flex flex-col justify-center px-6 py-8 about-bounce-left">
+      <div class="md:w-3/5 w-full flex flex-col justify-center px-6 py-8 scroll-reveal slideInLeft shine-reveal" id="about-story-left">
         <h2 class="text-3xl md:text-4xl font-montserrat font-bold about-section-title mb-6">About Us</h2>
         <p class="text-gray-800 text-base md:text-lg leading-relaxed">
           Koeta Bath Fitting is a leading industrial company specializing in high-quality bath fittings and accessories. Based in Jamnagar, Gujarat, we have been serving clients across India with a commitment to excellence and innovation.<br><br>
@@ -143,8 +167,8 @@
         </p>
       </div>
       <!-- Right: Image with gray background -->
-      <div class="md:w-2/5 w-full bg-blue-50 flex items-center justify-center p-6 about-bounce-right glass-section">
-        <img src="{{ url_for('static', filename='about.png') }}" alt="About Koeta Bath Fitting" class="w-full h-auto object-contain rounded shadow-lg">
+      <div class="md:w-2/5 w-full bg-gray-50 flex items-center justify-center p-6 about-bounce-right glass-section pulse-float" id="about-story-img">
+        <img src="{{ url_for('static', filename='about.png') }}" alt="About Koeta Bath Fitting" class="w-full h-auto object-contain rounded shadow-lg whyus-float-img transition-transform duration-300 hover:scale-110">
       </div>
     </div>
   </section>
@@ -152,13 +176,13 @@
   <section class="max-w-7xl mx-auto px-4 py-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Mission Card -->
-      <div class="relative flex flex-col items-center">
-        <!-- Chevron/triangle -->
-        <div class="absolute -top-7 left-1/2 -translate-x-1/2 z-20 flex gap-1">
-          <svg width="24" height="18" viewBox="0 0 24 18" fill="none"><polygon points="12,0 24,18 0,18" fill="#0099c8"/></svg>
-          <svg width="24" height="18" viewBox="0 0 24 18" fill="none"><polygon points="12,0 24,18 0,18" fill="#00c8c8"/></svg>
-        </div>
-        <div class="about-card flex flex-col items-center pt-12 pb-8 px-6 shadow-lg rounded-3xl bg-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" style="min-height:370px;">
+      <div class="relative flex flex-col items-center scroll-reveal fadeInUp">
+        <svg class="blob-bg" viewBox="0 0 180 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path id="blob1" fill="#e0f7fa" d="M90,70 Q120,10 170,70 Q120,130 90,70 Q60,130 10,70 Q60,10 90,70Z">
+            <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M90,70 Q120,10 170,70 Q120,130 90,70 Q60,130 10,70 Q60,10 90,70Z;M90,70 Q140,30 170,90 Q120,130 90,70 Q60,130 10,90 Q40,30 90,70Z;M90,70 Q120,10 170,70 Q120,130 90,70 Q60,130 10,70 Q60,10 90,70Z"/>
+          </path>
+        </svg>
+        <div class="about-card product-tilt flex flex-col items-center pt-12 pb-8 px-6 shadow-lg rounded-3xl bg-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 scroll-fade-in fade-up float-card" style="min-height:370px;">
           <!-- Glowing Icon -->
           <div class="mb-4 mt-2">
             <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 12px #00B7C2);">
@@ -172,13 +196,13 @@
         </div>
       </div>
       <!-- Vision Card -->
-      <div class="relative flex flex-col items-center">
-        <!-- Chevron/triangle -->
-        <div class="absolute -top-7 left-1/2 -translate-x-1/2 z-20 flex gap-1">
-          <svg width="24" height="18" viewBox="0 0 24 18" fill="none"><polygon points="12,0 24,18 0,18" fill="#0099c8"/></svg>
-          <svg width="24" height="18" viewBox="0 0 24 18" fill="none"><polygon points="12,0 24,18 0,18" fill="#00c8c8"/></svg>
-        </div>
-        <div class="about-card flex flex-col items-center pt-12 pb-8 px-6 shadow-lg rounded-3xl bg-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" style="min-height:370px;">
+      <div class="relative flex flex-col items-center scroll-reveal fadeInUp">
+        <svg class="blob-bg" viewBox="0 0 180 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path id="blob2" fill="#e0f7fa" d="M90,70 Q120,10 170,70 Q120,130 90,70 Q60,130 10,70 Q60,10 90,70Z">
+            <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M90,70 Q120,10 170,70 Q120,130 90,70 Q60,130 10,90 Q40,30 90,70Z;M90,70 Q120,10 170,70 Q120,130 90,70 Q60,130 10,70 Q60,10 90,70Z"/>
+          </path>
+        </svg>
+        <div class="about-card product-tilt flex flex-col items-center pt-12 pb-8 px-6 shadow-lg rounded-3xl bg-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 scroll-fade-in fade-up float-card" style="min-height:370px;">
           <!-- Glowing Icon -->
           <div class="mb-4 mt-2">
             <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 12px #00B7C2);">
@@ -192,13 +216,13 @@
         </div>
       </div>
       <!-- Core Value Card -->
-      <div class="relative flex flex-col items-center">
-        <!-- Chevron/triangle -->
-        <div class="absolute -top-7 left-1/2 -translate-x-1/2 z-20 flex gap-1">
-          <svg width="24" height="18" viewBox="0 0 24 18" fill="none"><polygon points="12,0 24,18 0,18" fill="#00c8c8"/></svg>
-          <svg width="24" height="18" viewBox="0 0 24 18" fill="none"><polygon points="12,0 24,18 0,18" fill="#0099c8"/></svg>
-        </div>
-        <div class="about-card flex flex-col items-center pt-12 pb-8 px-6 shadow-lg rounded-3xl bg-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" style="min-height:370px;">
+      <div class="relative flex flex-col items-center scroll-reveal fadeInUp">
+        <svg class="blob-bg" viewBox="0 0 180 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path id="blob3" fill="#e0f7fa" d="M90,70 Q120,10 170,70 Q120,130 90,70 Q60,130 10,70 Q60,10 90,70Z">
+            <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M90,70 Q120,10 170,70 Q120,130 90,70 Q60,130 10,90 Q40,30 90,70Z;M90,70 Q120,10 170,70 Q120,130 90,70 Q60,130 10,70 Q60,10 90,70Z"/>
+          </path>
+        </svg>
+        <div class="about-card product-tilt flex flex-col items-center pt-12 pb-8 px-6 shadow-lg rounded-3xl bg-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 scroll-fade-in fade-up float-card" style="min-height:370px;">
           <!-- Glowing Icon -->
           <div class="mb-4 mt-2">
             <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 12px #00B7C2);">
@@ -217,7 +241,7 @@
   <section class="max-w-5xl mx-auto px-4 py-16">
     <div class="text-center mb-10">
       <!-- <span class="uppercase text-xs tracking-widest about-badge">KOETA BATH FITTING</span> -->
-      <h2 class="text-3xl md:text-4xl font-montserrat font-bold about-section-title mb-2">Why Choose Us?</h2>
+      <h2 class="text-3xl md:text-4xl font-montserrat font-bold about-section-title mb-2 scroll-reveal shine-reveal">Why Choose Us?</h2>
       <div class="flex justify-center mb-4">
         <span class="inline-block w-16 h-1 rounded-full bg-gradient-to-r from-blue-400 to-cyan-600"></span>
       </div>
@@ -236,27 +260,27 @@
           Koeta Bath Fitting is a trusted name in the field of bath fittings and accessories, known for our commitment to quality, innovation, and customer satisfaction. Here's why our clients choose us:
         </p>
         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group">
+          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group scroll-reveal shine-reveal">
             <span class="inline-block text-2xl text-blue-500 group-hover:text-blue-700 transition-colors duration-300">✔</span>
             <span class="font-montserrat font-semibold text-gray-800 group-hover:text-blue-700">Quality Craftsmanship</span>
           </li>
-          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group">
+          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group scroll-reveal shine-reveal">
             <span class="inline-block text-2xl text-blue-500 group-hover:text-blue-700 transition-colors duration-300">⚡</span>
             <span class="font-montserrat font-semibold text-gray-800 group-hover:text-blue-700">Latest Technology</span>
           </li>
-          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group">
+          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group scroll-reveal shine-reveal">
             <span class="inline-block text-2xl text-blue-500 group-hover:text-blue-700 transition-colors duration-300">🎯</span>
             <span class="font-montserrat font-semibold text-gray-800 group-hover:text-blue-700">Customer Satisfaction</span>
           </li>
-          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group">
+          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group scroll-reveal shine-reveal">
             <span class="inline-block text-2xl text-blue-500 group-hover:text-blue-700 transition-colors duration-300">⏱</span>
             <span class="font-montserrat font-semibold text-gray-800 group-hover:text-blue-700">On-Time Delivery</span>
           </li>
-          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group">
+          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group scroll-reveal shine-reveal">
             <span class="inline-block text-2xl text-blue-500 group-hover:text-blue-700 transition-colors duration-300">💡</span>
             <span class="font-montserrat font-semibold text-gray-800 group-hover:text-blue-700">Continuous Improvement</span>
           </li>
-          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group">
+          <li class="whyus-list-item flex items-center gap-3 p-3 rounded-lg about-list-item shadow hover:bg-blue-50 transition-all duration-300 group scroll-reveal shine-reveal">
             <span class="inline-block text-2xl text-blue-500 group-hover:text-blue-700 transition-colors duration-300">🌱</span>
             <span class="font-montserrat font-semibold text-gray-800 group-hover:text-blue-700">Environmental Responsibility</span>
           </li>
